@@ -1,0 +1,30 @@
+DEBUG = False
+
+HOST = '{{ server_ip }}'
+PORT = '{{ server_port }}'
+
+# Redis
+COUNTER_REDIS_SERVER = '{{ redis_server }}'
+COUNTER_REDIS_PORT = '{{ redis_port }}'
+COUNTER_REDIS_PAS = '{{ redis_password }}'
+
+username = '{{ mysql_user }}'
+password = '{{ mysql_pwd }}'
+mysql_host = '{{ mysql_host }}'
+mysql_port = '{{ mysql_port }}'
+
+DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'NAME': '{{ mysql_db }}',
+            'USER': username,
+            'PASSWORD': password,
+            'HOST': mysql_host,
+            'PORT': mysql_port,
+            'OPTIONS': {
+                "init_command": "SET storage_engine=INNODB;",
+                }
+            }
+        }
+
+MYSQL_DB_DEFAULT_HOST = 'mysql://%s:%s@%s:%s' % (username, password, mysql_host, mysql_port)
