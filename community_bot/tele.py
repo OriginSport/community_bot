@@ -28,6 +28,8 @@ def get_content(text, lang):
     return Reply.get_content(key, lang)
 
 def handle_message(msg):
+    if not msg:
+        return
     text = msg.text
     if not '/' in text and '@' in text:
         return
